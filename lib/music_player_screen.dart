@@ -98,7 +98,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           title: const Text("Playing Music"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(20),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ListView(
             children: [
               const SizedBox(
@@ -146,16 +146,16 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                     }),
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 5,
                   ),
                   Center(child: MusicController(audioPlayer: _audioPlayer)),
                   const SizedBox(
-                    height: 15,
+                    height: 10,
                   ),
                   const Text(
                     "Episode",
                     style: TextStyle(
-                        fontWeight: FontWeight.bold, color: Colors.white),
+                        fontWeight: FontWeight.bold, color: Color(0xFFA7A9AC)),
                   ),
                   IconButton(
                     onPressed: () {
@@ -172,135 +172,139 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                             Icons.arrow_drop_up,
                             color: Colors.white,
                           ),
-                    iconSize: 60,
+                    iconSize: 55,
                   ),
                   //Adding dropdown button
                   _dropDownClick
                       ? const SizedBox()
-                      : ListView(
-                          shrinkWrap: true,
-                          children: [
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
+                      : SizedBox(
+                          //height: 400,
+                          width: double.infinity,
+                          child: ListView(
+                            shrinkWrap: true,
+                            children: [
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: Image.asset(
+                                  'assets/play_button.png',
+                                  height: 30,
+                                ),
                               ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: Image.asset(
+                                  'assets/play_button.png',
+                                  height: 30,
+                                ),
                               ),
-                              trailing: const Icon(
-                                Icons.play_arrow_rounded,
-                                color: Colors.white,
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: Image.asset(
+                                  'assets/play_button.png',
+                                  height: 30,
+                                ),
                               ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                              trailing: const Icon(
-                                Icons.play_arrow_rounded,
-                                color: Colors.white,
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ListTile(
+                                leading: Image.asset('assets/demo_image.png'),
+                                title: const Text(
+                                  "Episode Name Here",
+                                  style: TextStyle(color: Colors.white),
+                                ),
+                                subtitle: const Text(
+                                  "Writer: Writer Name Here",
+                                  style: TextStyle(color: Color(0xFFA7A9AC)),
+                                ),
+                                trailing: const Icon(
+                                  Icons.lock_outline_rounded,
+                                  color: Colors.white,
+                                ),
                               ),
-                              trailing: const Icon(
-                                Icons.play_arrow_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
-                              ),
-                              trailing: const Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
-                              ),
-                              trailing: const Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
-                              ),
-                              trailing: const Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
-                              ),
-                              trailing: const Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                            ListTile(
-                              leading: Image.asset('assets/demo_image.png'),
-                              title: const Text(
-                                "Episode Name Here",
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              subtitle: const Text(
-                                "Writer: Writer Name Here",
-                                style: TextStyle(color: Color(0xFFA7A9AC)),
-                              ),
-                              trailing: const Icon(
-                                Icons.lock_outline_rounded,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                 ],
               ),

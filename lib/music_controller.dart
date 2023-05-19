@@ -19,7 +19,7 @@ class MusicController extends StatelessWidget {
         IconButton(
           onPressed: audioPlayer.seekToPrevious,
           icon: const Icon(Icons.skip_previous_rounded),
-          iconSize: 60,
+          iconSize: 50,
           color: Colors.white,
         ),
         StreamBuilder<PlayerState>(
@@ -31,19 +31,19 @@ class MusicController extends StatelessWidget {
             if (!(playing ?? false)) {
               return IconButton(
                 onPressed: audioPlayer.play,
-                iconSize: 80,
+                iconSize: 70,
                 color: Colors.white,
-                icon: const Icon(Icons.play_arrow_rounded),
+                icon: Image.asset('assets/play_button.png'),
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
                 onPressed: audioPlayer.pause,
-                iconSize: 80,
+                iconSize: 70,
                 color: Colors.white,
                 icon: const Icon(Icons.pause_rounded),
               );
             }
-            // IconButton
+            // IconButton onPressed cannot be null, so disable the button if
             return IconButton(
               onPressed: () {},
               icon: const Icon(Icons.play_arrow),
@@ -55,7 +55,7 @@ class MusicController extends StatelessWidget {
         IconButton(
           onPressed: audioPlayer.seekToNext,
           icon: const Icon(Icons.skip_next_rounded),
-          iconSize: 60,
+          iconSize: 50,
           color: Colors.white,
         ),
         IconButton(

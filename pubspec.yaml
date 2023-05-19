@@ -37,7 +37,6 @@ dependencies:
   cupertino_icons: ^1.0.2
   just_audio: ^0.9.33
   just_audio_background: ^0.0.1-beta.10
-  cached_network_image: ^3.2.3
   audio_video_progress_bar: ^1.0.1
   rxdart: ^0.27.7
 
