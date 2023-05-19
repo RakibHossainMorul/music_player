@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//This is Widget is used for displaying the music player data such as image, title and artist.
 class MusicPlayerData extends StatelessWidget {
   final String imageURL;
   final String title;

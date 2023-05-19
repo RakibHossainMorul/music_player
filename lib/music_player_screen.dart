@@ -7,6 +7,7 @@ import 'package:audio_video_progress_bar/audio_video_progress_bar.dart';
 import "controller.dart";
 import 'package:just_audio_background/just_audio_background.dart';
 
+//This is the main screen of the music player application.
 class MusicPlayerScreen extends StatefulWidget {
   const MusicPlayerScreen({super.key});
 
@@ -16,8 +17,8 @@ class MusicPlayerScreen extends StatefulWidget {
 
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   late AudioPlayer _audioPlayer;
+  //Using boolean type variable to control the  Icon button for listview of song list.
   bool _dropDownClick = true;
-  //Adding dropdown button
 
   //Adding Audio source which could play in the app
   final _playList = ConcatenatingAudioSource(children: [
@@ -53,6 +54,9 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     ),
   ]);
 
+  //
+//Using Rx.combineLatest3 to combine the position, bufferedPosition and duration of the audio player.
+//
   Stream<PositionData> get _positionDataStream =>
       Rx.combineLatest3<Duration, Duration, Duration?, PositionData>(
         _audioPlayer.positionStream,
@@ -91,9 +95,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           backgroundColor: const Color(0xFF101223),
           elevation: 0,
           leading: IconButton(
-              onPressed: () {},
-              icon: Image.asset('assets/back_button.png')), // IconButton
-
+              onPressed: () {}, icon: Image.asset('assets/back_button.png')),
           centerTitle: true,
           title: const Text("Playing Music"),
         ),
@@ -151,6 +153,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   const SizedBox(
                     height: 5,
                   ),
+                  //Adding Music Controller Widget and passing parameter
                   Center(child: MusicController(audioPlayer: _audioPlayer)),
                   const SizedBox(
                     height: 10,

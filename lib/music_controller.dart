@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 
+//This is a music player controller widget that will be used in the music player screen.
 class MusicController extends StatelessWidget {
   final AudioPlayer audioPlayer;
   const MusicController({super.key, required this.audioPlayer});
@@ -43,7 +44,7 @@ class MusicController extends StatelessWidget {
                 icon: const Icon(Icons.pause_rounded),
               );
             }
-            // IconButton onPressed cannot be null, so disable the button if
+            // IconButton onPressed cannot be null, so disable the button and show it.
             return IconButton(
               onPressed: () {},
               icon: const Icon(Icons.play_arrow),
