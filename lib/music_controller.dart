@@ -11,10 +11,16 @@ class MusicController extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.shuffle_rounded),
+          iconSize: 30,
+          color: const Color(0xFFA7A9AC),
+        ),
+        IconButton(
           onPressed: audioPlayer.seekToPrevious,
           icon: const Icon(Icons.skip_previous_rounded),
           iconSize: 60,
-          color: Colors.blue,
+          color: Colors.white,
         ),
         StreamBuilder<PlayerState>(
           stream: audioPlayer.playerStateStream,
@@ -26,14 +32,14 @@ class MusicController extends StatelessWidget {
               return IconButton(
                 onPressed: audioPlayer.play,
                 iconSize: 80,
-                color: Colors.blue,
+                color: Colors.white,
                 icon: const Icon(Icons.play_arrow_rounded),
               );
             } else if (processingState != ProcessingState.completed) {
               return IconButton(
                 onPressed: audioPlayer.pause,
                 iconSize: 80,
-                color: Colors.blue,
+                color: Colors.white,
                 icon: const Icon(Icons.pause_rounded),
               );
             }
@@ -42,7 +48,7 @@ class MusicController extends StatelessWidget {
               onPressed: () {},
               icon: const Icon(Icons.play_arrow),
               iconSize: 80,
-              color: Colors.blue,
+              color: Colors.white,
             );
           },
         ),
@@ -50,7 +56,13 @@ class MusicController extends StatelessWidget {
           onPressed: audioPlayer.seekToNext,
           icon: const Icon(Icons.skip_next_rounded),
           iconSize: 60,
-          color: Colors.blue,
+          color: Colors.white,
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(Icons.repeat_rounded),
+          iconSize: 30,
+          color: const Color(0xFFA7A9AC),
         ),
       ],
     );

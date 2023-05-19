@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Music Player Application',
       theme: ThemeData(
-        scaffoldBackgroundColor: Colors.white,
-        primarySwatch: Colors.blue,
+        scaffoldBackgroundColor: const Color(0xFF101223),
       ),
       home: const MusicPlayerScreen(),
     );

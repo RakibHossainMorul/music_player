@@ -28,29 +28,49 @@ class MusicPlayerData extends StatelessWidget {
           ),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: CachedNetworkImage(
-              imageUrl: imageURL,
-              height: 300,
-              width: 300,
-              fit: BoxFit.cover,
+            child: Image.asset(
+              'assets/image1.png',
+              height: 350,
+              width: 350,
+              fit: BoxFit.fill,
             ),
           ),
         ),
         const SizedBox(
-          height: 8,
+          height: 15,
         ),
-        Text(
-          title,
-          style: const TextStyle(
-              fontSize: 22, color: Colors.black, fontWeight: FontWeight.bold),
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        Text(
-          artist,
-          style: const TextStyle(
-              fontSize: 18, color: Colors.black, fontWeight: FontWeight.bold),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    title,
+                    style: const TextStyle(
+                        fontSize: 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  IconButton(
+                      onPressed: () {},
+                      icon: const Icon(
+                        Icons.bookmark,
+                        color: Colors.white,
+                      )),
+                ],
+              ),
+              Text(
+                artist,
+                style: const TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
+              ),
+            ],
+          ),
         )
       ],
     );

@@ -16,6 +16,8 @@ class MusicPlayerScreen extends StatefulWidget {
 
 class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
   late AudioPlayer _audioPlayer;
+  bool _dropDownClick = true;
+  //Adding dropdown button
 
   //Adding Audio source which could play in the app
   final _playList = ConcatenatingAudioSource(children: [
@@ -86,61 +88,222 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
+          backgroundColor: const Color(0xFF101223),
+          elevation: 0,
           leading: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.arrow_back_ios_new)), // IconButton
+              icon: const Icon(Icons.arrow_back_ios_new_rounded)), // IconButton
 
           centerTitle: true,
-          title: const Text("Music Player App"),
+          title: const Text("Playing Music"),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
+          padding: const EdgeInsets.all(20),
+          child: ListView(
             children: [
-              StreamBuilder(
-                  stream: _audioPlayer.sequenceStateStream,
-                  builder: ((context, snapshot) {
-                    final state = snapshot.data;
-                    if (state?.sequence.isEmpty ?? true) {
-                      return const SizedBox();
-                    }
-                    final data = state!.currentSource!.tag as MediaItem;
-                    return MusicPlayerData(
-                        imageURL: data.artUri.toString(),
-                        title: data.title.toString(),
-                        artist: data.artist.toString());
-                  })),
               const SizedBox(
                 height: 20,
               ),
-              StreamBuilder<PositionData>(
-                stream: _positionDataStream,
-                builder: ((context, snapshot) {
-                  final positionData = snapshot.data;
-                  return ProgressBar(
-                    barHeight: 8,
-                    baseBarColor: Colors.grey[600],
-                    bufferedBarColor: Colors.grey,
-                    progressBarColor: Colors.red,
-                    thumbColor: Colors.red,
-                    timeLabelTextStyle: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                    progress: positionData?.position ?? Duration.zero,
-                    buffered: positionData?.bufferedPosition ?? Duration.zero,
-                    total: positionData?.duration ?? Duration.zero,
-                    onSeek: _audioPlayer.seek,
-                  );
-                }),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  StreamBuilder(
+                      stream: _audioPlayer.sequenceStateStream,
+                      builder: ((context, snapshot) {
+                        final state = snapshot.data;
+                        if (state?.sequence.isEmpty ?? true) {
+                          return const SizedBox();
+                        }
+                        final data = state!.currentSource!.tag as MediaItem;
+                        return MusicPlayerData(
+                            imageURL: data.artUri.toString(),
+                            title: data.title.toString(),
+                            artist: data.artist.toString());
+                      })),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  StreamBuilder<PositionData>(
+                    stream: _positionDataStream,
+                    builder: ((context, snapshot) {
+                      final positionData = snapshot.data;
+                      return ProgressBar(
+                        barHeight: 8,
+                        baseBarColor: const Color(0xFF494254),
+                        bufferedBarColor: const Color(0xFF5A5A5A),
+                        progressBarColor: const Color(0xFF5A5A5A),
+                        thumbColor: Colors.white,
+                        timeLabelTextStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                        progress: positionData?.position ?? Duration.zero,
+                        buffered:
+                            positionData?.bufferedPosition ?? Duration.zero,
+                        total: positionData?.duration ?? Duration.zero,
+                        onSeek: _audioPlayer.seek,
+                      );
+                    }),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(child: MusicController(audioPlayer: _audioPlayer)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  const Text(
+                    "Episode",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold, color: Colors.white),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      setState(() {
+                        _dropDownClick = !_dropDownClick;
+                      });
+                    },
+                    icon: _dropDownClick
+                        ? const Icon(
+                            Icons.arrow_drop_down,
+                            color: Colors.white,
+                          )
+                        : const Icon(
+                            Icons.arrow_drop_up,
+                            color: Colors.white,
+                          ),
+                    iconSize: 60,
+                  ),
+                  //Adding dropdown button
+                  _dropDownClick
+                      ? const SizedBox()
+                      : ListView(
+                          shrinkWrap: true,
+                          children: [
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.play_arrow_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.play_arrow_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.play_arrow_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.lock_outline_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.lock_outline_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.lock_outline_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.lock_outline_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                            ListTile(
+                              leading: Image.asset('assets/demo_image.png'),
+                              title: const Text(
+                                "Episode Name Here",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              subtitle: const Text(
+                                "Writer: Writer Name Here",
+                                style: TextStyle(color: Color(0xFFA7A9AC)),
+                              ),
+                              trailing: const Icon(
+                                Icons.lock_outline_rounded,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ],
+                        ),
+                ],
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              Center(child: MusicController(audioPlayer: _audioPlayer)),
             ],
           ),
         ),
