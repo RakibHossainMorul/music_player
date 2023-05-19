@@ -26,8 +26,8 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3'),
       tag: MediaItem(
         id: '1',
-        artist: 'James',
-        title: 'Song name',
+        artist: 'Akonda',
+        title: 'Rabindranath Tagore',
         artUri: Uri.parse('https://picsum.photos/id/237/200/300'),
       ),
     ),
@@ -37,7 +37,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
       tag: MediaItem(
         id: '2',
         artist: 'James',
-        title: 'Song name',
+        title: 'Rabindranath Tagore',
         artUri: Uri.parse('https://picsum.photos/id/237/200/300'),
       ),
     ),
@@ -46,8 +46,8 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3'),
       tag: MediaItem(
         id: '3',
-        artist: 'James',
-        title: 'Song name',
+        artist: 'John',
+        title: 'Rabindranath Tagore',
         artUri: Uri.parse('https://picsum.photos/id/237/200/300'),
       ),
     ),
@@ -123,27 +123,30 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   const SizedBox(
                     height: 20,
                   ),
-                  StreamBuilder<PositionData>(
-                    stream: _positionDataStream,
-                    builder: ((context, snapshot) {
-                      final positionData = snapshot.data;
-                      return ProgressBar(
-                        barHeight: 8,
-                        baseBarColor: const Color(0xFF494254),
-                        bufferedBarColor: const Color(0xFF5A5A5A),
-                        progressBarColor: const Color(0xFF5A5A5A),
-                        thumbColor: Colors.white,
-                        timeLabelTextStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                        progress: positionData?.position ?? Duration.zero,
-                        buffered:
-                            positionData?.bufferedPosition ?? Duration.zero,
-                        total: positionData?.duration ?? Duration.zero,
-                        onSeek: _audioPlayer.seek,
-                      );
-                    }),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: StreamBuilder<PositionData>(
+                      stream: _positionDataStream,
+                      builder: ((context, snapshot) {
+                        final positionData = snapshot.data;
+                        return ProgressBar(
+                          barHeight: 8,
+                          baseBarColor: const Color(0xFF494254),
+                          bufferedBarColor: const Color(0xFF5A5A5A),
+                          progressBarColor: const Color(0xFF5A5A5A),
+                          thumbColor: Colors.white,
+                          timeLabelTextStyle: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                          ),
+                          progress: positionData?.position ?? Duration.zero,
+                          buffered:
+                              positionData?.bufferedPosition ?? Duration.zero,
+                          total: positionData?.duration ?? Duration.zero,
+                          onSeek: _audioPlayer.seek,
+                        );
+                      }),
+                    ),
                   ),
                   const SizedBox(
                     height: 5,
