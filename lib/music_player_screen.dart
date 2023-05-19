@@ -92,7 +92,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
           elevation: 0,
           leading: IconButton(
               onPressed: () {},
-              icon: const Icon(Icons.arrow_back_ios_new_rounded)), // IconButton
+              icon: Image.asset('assets/back_button.png')), // IconButton
 
           centerTitle: true,
           title: const Text("Playing Music"),
