@@ -156,7 +156,7 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                   //Adding Music Controller Widget and passing parameter
                   Center(child: MusicController(audioPlayer: _audioPlayer)),
                   const SizedBox(
-                    height: 10,
+                    height: 18,
                   ),
                   const Text(
                     "Episode",
